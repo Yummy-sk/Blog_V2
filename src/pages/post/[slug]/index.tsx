@@ -1,10 +1,10 @@
 import { bundleMDX } from 'mdx-bundler';
 import { SEO } from '@/common';
 import { NotionService } from '@/service';
-import { PostPageProps } from '@/types/data';
+import { BlogPageProps } from '@/types/data';
 import { Post } from '@/components';
 
-export default function Page({ detail, content }: PostPageProps) {
+export default function Page({ detail, content }: BlogPageProps) {
   const { title, description, cover, id } = detail;
   return (
     <>
@@ -14,7 +14,7 @@ export default function Page({ detail, content }: PostPageProps) {
         url={`https://www.yeummy-blog.com/post/${id}`}
         image={cover}
       />
-      <Post detail={detail} content={content} />;
+      <Post detail={detail} content={content} />
     </>
   );
 }

@@ -5,7 +5,7 @@ import {
 } from '@notionhq/client/build/src/api-endpoints';
 import { NotionToMarkdown } from 'notion-to-md';
 import { getCoverImg, parseData } from '@/util';
-import { CoverImageResponse, PostListTypes } from '@/types/data';
+import { CoverImageResponse, BlogListTypes } from '@/types/data';
 
 class NotionService {
   private notion: Client;
@@ -45,7 +45,7 @@ class NotionService {
   }: {
     targetTag?: string;
     targetTitle?: string;
-  }): Promise<Array<PostListTypes> | null> {
+  }): Promise<Array<BlogListTypes> | null> {
     try {
       const results = await this.notionQuery({
         filter: {
@@ -116,6 +116,43 @@ class NotionService {
       });
 
       return results.map(result => result.id);
+    } catch (error) {
+      console.error(error);
+
+      return null;
+    }
+  }
+
+  async getPostTags() {
+    try {
+      const results = await this.notionQuery({
+        filter: {
+          and: [
+            {
+              property: 'published',
+              checkbox: {
+                equals: true,
+              },
+            },
+          ],
+        },
+        sorts: [
+          {
+            property: 'created_time',
+            direction: 'descending',
+          },
+        ],
+      });
+
+      const tags = results.map(result => {
+        const { properties } = result;
+
+        return parseData({ properties }).tags;
+      });
+
+      return tags
+        .flat()
+        .filter((tag, index, self) => self.indexOf(tag) === index);
     } catch (error) {
       console.error(error);
 

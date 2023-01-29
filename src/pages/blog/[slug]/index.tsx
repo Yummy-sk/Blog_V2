@@ -1,49 +1,38 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/router';
 import { Transition, SEO } from '@/common';
 import { NotionService } from '@/service';
 import { useDebounce } from '@/hooks';
-import { PostListProps } from '@/types/data';
-import { PostList } from '@/components';
+import { BlogListProps } from '@/types/data';
+import { BlogList } from '@/components';
 
 interface Props {
-  posts: Array<PostListProps>;
-}
-
-interface PostState {
-  keyword: string;
+  posts: Array<BlogListProps>;
   tag: string;
-  posts: Array<PostListProps>;
 }
 
-const parseTag = (tag: string | string[] | undefined) => {
-  if (typeof tag === 'string') {
-    return tag.trim();
-  }
+interface BlogState {
+  keyword: string;
+  posts: Array<BlogListProps>;
+}
 
-  return '';
-};
-
-export default function Page({ posts }: Props) {
-  const router = useRouter();
+export default function Page({ posts, tag }: Props) {
   const image = process.env.NEXT_PUBLIC_PROFILE_URL || '';
-  const [postState, setPostState] = useState<PostState>({
+  const [blogState, setBlogState] = useState<BlogState>({
     keyword: '',
-    tag: '',
     posts,
   });
 
   const fetchPost = useCallback(
-    async ({ keyword, tag }: { keyword: string; tag: string }) => {
+    async ({ keyword }: { keyword: string }) => {
       try {
         const response = await fetch('/api/post', {
           method: 'POST',
           body: JSON.stringify({ search: keyword, tag }),
         });
 
-        const data = (await response.json()) as Array<PostListProps>;
+        const data = (await response.json()) as Array<BlogListProps>;
 
-        setPostState((prev: PostState) => ({
+        setBlogState((prev: BlogState) => ({
           ...prev,
           posts: data,
         }));
@@ -51,12 +40,11 @@ export default function Page({ posts }: Props) {
         console.error(error);
       }
     },
-    [],
+    [tag],
   );
 
   const fetchWithDebounce = useDebounce<{
     keyword: string;
-    tag: string;
   }>({
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     callback: fetchPost,
@@ -65,42 +53,35 @@ export default function Page({ posts }: Props) {
 
   const onChangeKeyword = useCallback(
     ({ keyword }: { keyword: string }) => {
-      setPostState((prev: PostState) => ({
+      setBlogState((prev: BlogState) => ({
         ...prev,
         keyword,
       }));
 
-      fetchWithDebounce({ keyword, tag: postState.tag });
+      fetchWithDebounce({ keyword });
     },
-    [fetchWithDebounce, postState.tag],
+    [fetchWithDebounce],
   );
 
   useEffect(() => {
-    const currentTag = parseTag(router.query.tag);
-
-    // NOTE: 태그가 변경되면 조건에 맞는 포스트를 가져온다.
-    if (postState.tag !== currentTag) {
-      fetchPost({ keyword: '', tag: currentTag });
-
-      setPostState((prev: PostState) => ({
-        ...prev,
-        tag: currentTag,
-      }));
-    }
-  }, [fetchPost, postState.tag, router.query.tag]);
+    setBlogState((prev: BlogState) => ({
+      ...prev,
+      posts,
+    }));
+  }, [posts]);
 
   return (
     <>
       <SEO
-        title='Posts'
+        title='Blog'
         description='안녕하세요 프론트앤드 개발자 염상권입니다. 경험과 공부한 내용을 기록하는 블로그입니다.'
-        url='https://www.yeummy-blog.com/post'
+        url={`https://www.yeummy-blog.com/blog/${tag}`}
         image={image}
       />
       <Transition>
-        <PostList
-          posts={postState.posts}
-          keyword={postState.keyword}
+        <BlogList
+          posts={blogState.posts}
+          keyword={blogState.keyword}
           onChangeKeyword={onChangeKeyword}
         />
       </Transition>
@@ -108,10 +89,15 @@ export default function Page({ posts }: Props) {
   );
 }
 
-export async function getStaticProps() {
-  // const { tag } = context.query as unknown as Query;
+export async function getStaticProps({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
   const notionService = new NotionService();
-  const posts = await notionService.getPosts({});
+  const posts = await notionService.getPosts({
+    targetTag: slug === 'all' ? '' : slug,
+  });
 
   if (!posts) {
     // Note: 에러가 발생했을 경우, 에러 페이지로 리다이렉트 합니다.
@@ -126,7 +112,33 @@ export async function getStaticProps() {
   return {
     props: {
       posts,
+      tag: slug === 'all' ? '' : slug,
     },
+    // NOTE: Incremental Static Regeneration
     revalidate: 1000,
+  };
+}
+
+export async function getStaticPaths() {
+  const notionService = new NotionService();
+  const tags = await notionService.getPostTags();
+
+  if (!tags) {
+    // Note: 에러가 발생했을 경우, 에러 페이지로 리다이렉트 합니다.
+    return {
+      redirect: {
+        destination: '/error',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    paths: ['all', ...tags].map(tag => ({
+      params: {
+        slug: tag,
+      },
+    })),
+    fallback: false,
   };
 }

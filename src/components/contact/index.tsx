@@ -57,7 +57,7 @@ export function Contact() {
   const onSubmit = async () => {
     if (!checkAllFieldIsValid()) {
       toast({
-        title: '필수 필드를 입력해주세요.',
+        title: 'Please fill in all required fields.',
         status: 'warning',
         duration: 2000,
         position: 'top',
@@ -75,7 +75,7 @@ export function Contact() {
       setFormState(initalState);
       setIsBlured(initialHoverState);
       toast({
-        title: '이메일이 성공적으로 전송되었습니다.',
+        title: 'Email sent successfully 🎉',
         status: 'success',
         duration: 2000,
         position: 'top',

@@ -1,38 +1,43 @@
 import { useRouter } from 'next/router';
 import { Input, useColorMode } from '@chakra-ui/react';
 import { parseTagString } from '@/util';
-import * as S from './PostOption.style';
+import * as S from './BlogOption.style';
 
 interface Props {
   keyword: string;
   onChangeKeyword: ({ keyword }: { keyword: string }) => void;
 }
 
-export function PostOption({ keyword, onChangeKeyword }: Props) {
+export function BlogOption({ keyword, onChangeKeyword }: Props) {
   const router = useRouter();
   const { colorMode } = useColorMode();
 
-  const {
-    query: { tag },
-  } = router;
+  const getCurrentPath = ({ asPath }: { asPath: string }) => {
+    const path = asPath.split('/');
+    return path[path.length - 1];
+  };
 
-  const getTitle = () => {
-    if (tag && typeof tag === 'string') {
-      return parseTagString({ tag });
+  const getTitle = ({ currentPath }: { currentPath: string }) => {
+    if (currentPath === 'all' || typeof currentPath !== 'string') {
+      return 'All Posts';
     }
 
-    return 'All Posts';
+    return parseTagString({ tag: currentPath });
   };
+
+  const currentTitle = getTitle({
+    currentPath: getCurrentPath({ asPath: router.asPath }),
+  });
 
   return (
     <S.Container>
       <S.Row>
-        <S.Title>{getTitle()}</S.Title>
-        {getTitle() !== 'All Posts' && (
+        <S.Title>{currentTitle}</S.Title>
+        {currentTitle !== 'All Posts' && (
           <S.Button
             currentTheme={colorMode}
             onClick={() => {
-              router.push('/post');
+              router.push('/blog/all');
             }}>
             All Posts
           </S.Button>

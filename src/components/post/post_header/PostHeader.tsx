@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ColorMode, useColorMode } from '@chakra-ui/react';
-import { PostDetailProps } from '@/types/data';
+import { BlogDetailProps } from '@/types/data';
 import { getCdnSrc, parseDateString, parseTagString } from '@/util';
 import * as S from './PostHeader.style';
 
@@ -24,13 +24,13 @@ function Tag({ currentTheme, tag, onClick }: TagProps) {
   );
 }
 
-export function PostHeader({ detail }: { detail: PostDetailProps }) {
+export function PostHeader({ detail }: { detail: BlogDetailProps }) {
   const { cover, title, createdTime, number, tags } = detail;
   const { colorMode } = useColorMode();
   const router = useRouter();
 
   const onTagClick = ({ tag }: { tag: string }) => {
-    router.push(`/post?tag=${tag}`);
+    router.push(`/blog/${tag}`);
   };
 
   const onBackClick = () => {
@@ -39,7 +39,7 @@ export function PostHeader({ detail }: { detail: PostDetailProps }) {
 
   return (
     <S.Container>
-      <S.Title>PostHeader</S.Title>
+      <S.Title>{title}</S.Title>
       <S.Wrapper>
         <S.Info currentTheme={colorMode}>
           {parseDateString({

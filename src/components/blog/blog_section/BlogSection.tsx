@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useColorMode, ColorMode } from '@chakra-ui/react';
-import { PostListProps } from '@/types/data';
+import { BlogListProps } from '@/types/data';
 import { parseDateString, parseTagString } from '@/util';
-import * as S from './PostSection.style';
+import * as S from './BlogSection.style';
 
 interface TagProps {
   tag: string;
@@ -14,7 +14,7 @@ function Tag({ tag, currentTheme }: TagProps) {
   const router = useRouter();
 
   const onClick = () => {
-    router.push(`/post?tag=${tag}`);
+    router.push(`/blog/${tag}`);
   };
 
   return (
@@ -24,7 +24,7 @@ function Tag({ tag, currentTheme }: TagProps) {
   );
 }
 
-export function PostSection({ post }: { post: PostListProps }) {
+export function BlogSection({ post }: { post: BlogListProps }) {
   const { id, title, description, tags, createdTime } = post;
   const { colorMode } = useColorMode();
   const href = `/post/${id}`;

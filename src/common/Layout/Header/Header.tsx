@@ -33,8 +33,8 @@ export function Header() {
     },
     {
       key: nanoid(),
-      name: 'Post',
-      path: '/post',
+      name: 'Blog',
+      path: '/blog/all',
     },
     {
       key: nanoid(),

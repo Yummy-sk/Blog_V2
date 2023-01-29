@@ -49,7 +49,7 @@ type CoverImageResponse = {
   };
 };
 
-type PostListTypes = {
+type BlogListTypes = {
   title: string;
   description: string;
   number: number;
@@ -57,11 +57,11 @@ type PostListTypes = {
   createdTime: string;
 };
 
-type PostListProps = Merge<PostListTypes, { id: string }>;
+type BlogListProps = Merge<BlogListTypes, { id: string }>;
 
-type PostDetailProps = Merge<PostListProps, { cover: string }>;
+type BlogDetailProps = Merge<BlogListProps, { cover: string }>;
 
-interface PostPageProps {
-  detail: PostDetailProps;
+interface BlogPageProps {
+  detail: BlogDetailProps;
   content: string;
 }

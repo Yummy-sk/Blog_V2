@@ -1,8 +1,8 @@
 import Lottie from 'react-lottie';
-import notFound from '@/components/post_list/lib/not_found_emoji.json';
-import * as S from './PostNotFound.style';
+import notFound from '@/components/blog/lib/not_found_emoji.json';
+import * as S from './BlogNotFound.style';
 
-export function PostNotFound({ keyword }: { keyword: string }) {
+export function BlogNotFound({ keyword }: { keyword: string }) {
   const defaultOptions = {
     loop: false,
     autoplay: true,
