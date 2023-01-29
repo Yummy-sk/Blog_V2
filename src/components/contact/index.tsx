@@ -98,8 +98,8 @@ export function Contact() {
       <S.Wrapper>
         <h1>Contact Me!</h1>
         <p>
-          I’m interested in any opportunities – If you have request or question,
-          don’t hesitate to use the form.
+          {`I'm open to new opportunities. If you have any questions, don't
+          hesitate to reach out`}
         </p>
       </S.Wrapper>
       <ContactForm

@@ -37,8 +37,12 @@ type MultiSelectResponse = {
 };
 
 type CreatedTimeResponse = {
-  type: 'created_time';
-  created_time: string;
+  type: 'date';
+  date: {
+    start: string;
+    end: string | null;
+    time_zone: null;
+  };
   id: string;
 };
 

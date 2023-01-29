@@ -7,15 +7,17 @@ interface IGetCdnSrc {
 }
 
 export const getCdnSrc = ({ src, width, height }: IGetCdnSrc) => {
-  const imageName = (() => src?.split('/').pop() || '')().replace(
-    /.jpg|.png/,
-    '',
-  );
+  const ROOT_FOLDER_NAME =
+    process.env.NEXT_PUBLIC_CLOUDINARY_ROOT_FOLDER || null;
 
   try {
-    if (!imageName) throw new Error('No image name found');
+    if (!ROOT_FOLDER_NAME) throw new Error('No image name found');
 
-    return buildImageUrl(imageName, {
+    const paths = src.split('/');
+    const idx = paths.findIndex(path => path === ROOT_FOLDER_NAME);
+    const parsedSrc = paths.slice(idx + 1).join('/');
+
+    return buildImageUrl(parsedSrc, {
       transformations: {
         resize: {
           type: 'scale',

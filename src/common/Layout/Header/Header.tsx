@@ -62,7 +62,13 @@ export function Header() {
               <NavLink
                 href={path}
                 name={name}
-                isActive={path === router.pathname}
+                isActive={
+                  name === 'Blog'
+                    ? ['/blog', '/post'].some((ph: string) =>
+                        router.pathname.includes(ph),
+                      )
+                    : router.pathname === path
+                }
               />
             </li>
           ))}

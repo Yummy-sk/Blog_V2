@@ -31,7 +31,7 @@ const getTags = (data: MultiSelectResponse): Array<string> => {
   return multi_select.map(tag => tag.name);
 };
 
-const getCreatedTime = (data: CreatedTimeResponse): string => data.created_time;
+const getCreatedTime = (data: CreatedTimeResponse): string => data.date.start;
 
 export const getCoverImg = (data: CoverImageResponse): string =>
   data.external.url;
@@ -61,7 +61,7 @@ export const parseData = ({
         case 'multi_select':
           return { ...acc, tags: getTags(info as MultiSelectResponse) };
 
-        case 'created_time':
+        case 'date':
           return {
             ...acc,
             createdTime: getCreatedTime(info as CreatedTimeResponse),
