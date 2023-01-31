@@ -1,9 +1,18 @@
 import { ColorMode } from '@chakra-ui/react';
 import styled from 'styled-components';
 
+export const Container = styled.article`
+  width: 100%;
+  height: fit-content;
+
+  margin-bottom: 100px;
+`;
+
 export const HeadingH1 = styled.h2`
   font-size: 1.8em;
   font-weight: 800;
+
+  scroll-margin-top: 400px;
 
   &:not(:first-child) {
     margin: 0.8em 0;
@@ -14,12 +23,16 @@ export const HeadingH2 = styled.h3`
   font-size: 1.4em;
   font-weight: 700;
   margin: 0.8em 0;
+
+  scroll-margin-top: 400px;
 `;
 
 export const HeadingH3 = styled.h4`
   font-size: 1em;
   font-weight: 600;
   margin: 0.8em 0;
+
+  scroll-margin-top: 400px;
 `;
 
 export const Bold = styled.strong`

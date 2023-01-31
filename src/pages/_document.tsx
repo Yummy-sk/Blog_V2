@@ -38,7 +38,10 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='ko'>
+      <Html
+        lang='ko'
+        className='scroll-smooth'
+        style={{ scrollBehavior: 'smooth' }}>
         <Head />
         <body>
           <Main />

@@ -13,4 +13,6 @@ export const GlobalStyle = createGlobalStyle`
   a:hover, a:active {
     text-decoration: none; 
   }
+
+  scroll-margin-top: 1000px;
 `;

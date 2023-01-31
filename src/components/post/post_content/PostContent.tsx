@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useMemo } from 'react';
+import { useId, useMemo } from 'react';
 import Image from 'next/image';
 import { getMDXComponent } from 'mdx-bundler/client';
 import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula';
@@ -23,15 +23,17 @@ import * as S from './PostContent.style';
 function Heading(props: HeadingProps) {
   const { children, 'aria-level': ariaLevel } = props;
 
+  const id = useId();
+
   switch (ariaLevel) {
     case 1:
-      return <S.HeadingH1>{children}</S.HeadingH1>;
+      return <S.HeadingH1 id={id}>{children}</S.HeadingH1>;
     case 2:
-      return <S.HeadingH2>{children}</S.HeadingH2>;
+      return <S.HeadingH2 id={id}>{children}</S.HeadingH2>;
     case 3:
-      return <S.HeadingH3>{children}</S.HeadingH3>;
+      return <S.HeadingH3 id={id}>{children}</S.HeadingH3>;
     default:
-      return <S.HeadingH3>{children}</S.HeadingH3>;
+      return <S.HeadingH3 id={id}>{children}</S.HeadingH3>;
   }
 }
 
@@ -150,5 +152,9 @@ const components = {
 
 export function PostContent({ content }: { content: string }) {
   const Component = useMemo(() => getMDXComponent(content), [content]);
-  return <Component components={components} />;
+  return (
+    <S.Container>
+      <Component components={components} />
+    </S.Container>
+  );
 }

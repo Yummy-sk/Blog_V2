@@ -59,3 +59,9 @@ type AnchorProps = DetailedHTMLProps<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 >;
+
+type TocItem = {
+  title: string;
+  id: string;
+  children: Array<TocItem>;
+};
