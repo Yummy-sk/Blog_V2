@@ -7,6 +7,22 @@ export const Container = styled.div`
   width: 100%;
 `;
 
+export const Form = styled.form<{ currentTheme: ColorMode }>`
+  display: flex;
+
+  input {
+    margin-right: 1rem;
+  }
+
+  button {
+    border: 1px solid
+      ${({ theme, currentTheme }) =>
+        currentTheme === 'light' ? theme.colors.dark : theme.colors.white};
+
+    font-weight: 400;
+  }
+`;
+
 export const Row = styled.div`
   width: 100%;
 

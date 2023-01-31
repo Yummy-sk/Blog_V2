@@ -1,14 +1,25 @@
 import { useRouter } from 'next/router';
-import { Input, useColorMode } from '@chakra-ui/react';
+import { Button, Input, useColorMode } from '@chakra-ui/react';
 import { parseTagString } from '@/util';
 import * as S from './BlogOption.style';
 
 interface Props {
   keyword: string;
   onChangeKeyword: ({ keyword }: { keyword: string }) => void;
+  onSubmitKeyword: ({
+    e,
+    keyword,
+  }: {
+    e: React.FormEvent<HTMLFormElement>;
+    keyword: string;
+  }) => void;
 }
 
-export function BlogOption({ keyword, onChangeKeyword }: Props) {
+export function BlogOption({
+  keyword,
+  onChangeKeyword,
+  onSubmitKeyword,
+}: Props) {
   const router = useRouter();
   const { colorMode } = useColorMode();
 
@@ -43,16 +54,24 @@ export function BlogOption({ keyword, onChangeKeyword }: Props) {
           </S.Button>
         )}
       </S.Row>
-      <Input
-        placeholder='Search Keyword'
-        width='100%'
-        value={keyword}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          onChangeKeyword({
-            keyword: e.target.value,
-          })
-        }
-      />
+
+      <S.Form
+        currentTheme={colorMode}
+        onSubmit={e => onSubmitKeyword({ e, keyword })}>
+        <Input
+          placeholder='Search Keyword'
+          width='100%'
+          value={keyword}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChangeKeyword({
+              keyword: e.target.value,
+            })
+          }
+        />
+        <Button variant='outline' size='md' type='submit'>
+          Submit
+        </Button>
+      </S.Form>
     </S.Container>
   );
 }

@@ -69,3 +69,9 @@ interface BlogPageProps {
   detail: BlogDetailProps;
   content: string;
 }
+
+export interface BlogState {
+  keyword: string;
+  submitedKeyword: string;
+  posts: Array<BlogListProps>;
+}

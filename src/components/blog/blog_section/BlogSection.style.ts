@@ -38,11 +38,19 @@ export const Head = styled.div<Theme>`
 
 export const Middle = styled.div<Theme>`
   margin-bottom: 0.4375rem;
+  width: 100%;
 
   display: flex;
   font-weight: 600;
+  flex-wrap: wrap;
+
+  summary {
+    list-style: none;
+    font-size: 0.875rem;
+    margin-right: 0.25rem;
+  }
+
   p {
-    margin-left: 0.25rem;
     transition: color 0.3s ease-in-out;
 
     color: ${({ theme, currentTheme }) =>
@@ -54,11 +62,6 @@ export const Middle = styled.div<Theme>`
       color: ${({ theme, currentTheme }) =>
         currentTheme === 'light' ? theme.colors.lightGray : theme.colors.gray};
     }
-  }
-
-  summary {
-    list-style: none;
-    font-size: 0.875rem;
   }
 `;
 

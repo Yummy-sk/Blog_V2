@@ -1,8 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Transition, SEO } from '@/common';
 import { NotionService } from '@/service';
-import { useDebounce } from '@/hooks';
-import { BlogListProps } from '@/types/data';
+import { BlogListProps, BlogState } from '@/types/data';
 import { BlogList } from '@/components';
 
 interface Props {
@@ -10,15 +9,11 @@ interface Props {
   tag: string;
 }
 
-interface BlogState {
-  keyword: string;
-  posts: Array<BlogListProps>;
-}
-
 export default function Page({ posts, tag }: Props) {
   const image = process.env.NEXT_PUBLIC_PROFILE_URL || '';
   const [blogState, setBlogState] = useState<BlogState>({
     keyword: '',
+    submitedKeyword: '',
     posts,
   });
 
@@ -35,6 +30,7 @@ export default function Page({ posts, tag }: Props) {
         setBlogState((prev: BlogState) => ({
           ...prev,
           posts: data,
+          submitedKeyword: keyword,
         }));
       } catch (error) {
         console.error(error);
@@ -43,24 +39,25 @@ export default function Page({ posts, tag }: Props) {
     [tag],
   );
 
-  const fetchWithDebounce = useDebounce<{
-    keyword: string;
-  }>({
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    callback: fetchPost,
-    delay: 500,
-  });
+  const onChangeKeyword = useCallback(({ keyword }: { keyword: string }) => {
+    setBlogState((prev: BlogState) => ({
+      ...prev,
+      keyword,
+    }));
+  }, []);
 
-  const onChangeKeyword = useCallback(
-    ({ keyword }: { keyword: string }) => {
-      setBlogState((prev: BlogState) => ({
-        ...prev,
-        keyword,
-      }));
-
-      fetchWithDebounce({ keyword });
+  const onSubmitKeyword = useCallback(
+    ({
+      e,
+      keyword,
+    }: {
+      e: React.FormEvent<HTMLFormElement>;
+      keyword: string;
+    }) => {
+      e.preventDefault();
+      fetchPost({ keyword });
     },
-    [fetchWithDebounce],
+    [fetchPost],
   );
 
   useEffect(() => {
@@ -80,9 +77,9 @@ export default function Page({ posts, tag }: Props) {
       />
       <Transition>
         <BlogList
-          posts={blogState.posts}
-          keyword={blogState.keyword}
+          blogState={blogState}
           onChangeKeyword={onChangeKeyword}
+          onSubmitKeyword={onSubmitKeyword}
         />
       </Transition>
     </>
