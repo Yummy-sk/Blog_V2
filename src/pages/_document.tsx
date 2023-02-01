@@ -7,6 +7,7 @@ import Document, {
   DocumentInitialProps,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { generateRSS } from '@/util/generateRSS';
 
 class MyDocument extends Document {
   static async getInitialProps(
@@ -33,6 +34,7 @@ class MyDocument extends Document {
       };
     } finally {
       sheet.seal();
+      await generateRSS();
     }
   }
 

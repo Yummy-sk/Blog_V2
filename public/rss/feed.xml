@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Yeummy-sk Blog</title>
+        <link>https://www.yeummy-blog.com/</link>
+        <description>성장을 위해 노력하는 개발자 염상권의 블로그입니다.</description>
+        <lastBuildDate>Wed, 01 Feb 2023 02:15:17 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Feed for Node.js</generator>
+        <image>
+            <title>Yeummy-sk Blog</title>
+            <url>https://www.yeummy-blog.com/favicon.ico</url>
+            <link>https://www.yeummy-blog.com/</link>
+        </image>
+        <copyright>All rights reserved 2023, Jatin Sharma</copyright>
+        <item>
+            <title><![CDATA[Mutations & Updates - 번역]]></title>
+            <link>https://www.yeummy-blog.com/blog/df29c9f8-7006-470d-bd1d-1344214e7480</link>
+            <guid>https://www.yeummy-blog.com/blog/df29c9f8-7006-470d-bd1d-1344214e7480</guid>
+            <pubDate>Fri, 27 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Relay에서 자원을 수정할 수 있는 Mutation에 대해 알아봅시다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Webpack]]></title>
+            <link>https://www.yeummy-blog.com/blog/d624ea50-6947-4f8d-9f0f-97f5989b9849</link>
+            <guid>https://www.yeummy-blog.com/blog/d624ea50-6947-4f8d-9f0f-97f5989b9849</guid>
+            <pubDate>Sun, 30 Oct 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Webpack을 사용하는 이유와 기본 구성에 대해 알아봅시다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Scope & Closure]]></title>
+            <link>https://www.yeummy-blog.com/blog/09856ec5-14ed-47c7-a108-24770625affb</link>
+            <guid>https://www.yeummy-blog.com/blog/09856ec5-14ed-47c7-a108-24770625affb</guid>
+            <pubDate>Tue, 16 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[스코프와 클로저는 무엇일까?]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Ajax]]></title>
+            <link>https://www.yeummy-blog.com/blog/8fff75f4-8213-4473-9f60-f4864082dcb1</link>
+            <guid>https://www.yeummy-blog.com/blog/8fff75f4-8213-4473-9f60-f4864082dcb1</guid>
+            <pubDate>Wed, 10 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Ajax의 역사와 개념에 대해 알아봅시다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[react native Date:undefined 오류 해결]]></title>
+            <link>https://www.yeummy-blog.com/blog/ba94ae19-d2cf-4e25-bd9b-9e55a5a893dd</link>
+            <guid>https://www.yeummy-blog.com/blog/ba94ae19-d2cf-4e25-bd9b-9e55a5a893dd</guid>
+            <pubDate>Wed, 29 Jun 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[react native에서 Date:undefined 오류를 해결했던 경험에 대해 알아봅시다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[React Router v6]]></title>
+            <link>https://www.yeummy-blog.com/blog/fc62856a-cd61-499c-97c5-667944a8e572</link>
+            <guid>https://www.yeummy-blog.com/blog/fc62856a-cd61-499c-97c5-667944a8e572</guid>
+            <pubDate>Thu, 09 Jun 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[React Router v6 사용법을 알아봅니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[React vs React DOM]]></title>
+            <link>https://www.yeummy-blog.com/blog/c747fb32-76ee-498b-9767-8881f500282d</link>
+            <guid>https://www.yeummy-blog.com/blog/c747fb32-76ee-498b-9767-8881f500282d</guid>
+            <pubDate>Wed, 01 Jun 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[React와 React DOM은 무엇이며, 차이점은 무엇일까?]]></description>
+        </item>
+    </channel>
+</rss>

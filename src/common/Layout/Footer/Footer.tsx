@@ -61,7 +61,7 @@ export function Footer() {
     },
     {
       id: nanoid(),
-      href: 'https://www.yeummy-blog.com',
+      href: 'https://www.yeummy-blog.com/rss/feed.xml',
       name: 'RSS',
     },
   ];

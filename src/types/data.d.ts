@@ -54,6 +54,7 @@ type CoverImageResponse = {
 };
 
 type BlogListTypes = {
+  id: string;
   title: string;
   description: string;
   number: number;

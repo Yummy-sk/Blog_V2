@@ -1,0 +1,56 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Yeummy-sk Blog",
+    "home_page_url": "https://www.yeummy-blog.com/",
+    "feed_url": "https://www.yeummy-blog.com/rss/feed.json",
+    "description": "성장을 위해 노력하는 개발자 염상권의 블로그입니다.",
+    "icon": "https://www.yeummy-blog.com/favicon.ico",
+    "author": {
+        "name": "SangKwon Yeum",
+        "url": "https://twitter.com/NateYeum"
+    },
+    "items": [
+        {
+            "url": "https://www.yeummy-blog.com/blog/df29c9f8-7006-470d-bd1d-1344214e7480",
+            "title": "Mutations & Updates - 번역",
+            "summary": "Relay에서 자원을 수정할 수 있는 Mutation에 대해 알아봅시다.",
+            "date_modified": "2023-01-27T00:00:00.000Z"
+        },
+        {
+            "url": "https://www.yeummy-blog.com/blog/d624ea50-6947-4f8d-9f0f-97f5989b9849",
+            "title": "Webpack",
+            "summary": "Webpack을 사용하는 이유와 기본 구성에 대해 알아봅시다.",
+            "date_modified": "2022-10-30T00:00:00.000Z"
+        },
+        {
+            "url": "https://www.yeummy-blog.com/blog/09856ec5-14ed-47c7-a108-24770625affb",
+            "title": "Scope & Closure",
+            "summary": "스코프와 클로저는 무엇일까?",
+            "date_modified": "2022-08-16T00:00:00.000Z"
+        },
+        {
+            "url": "https://www.yeummy-blog.com/blog/8fff75f4-8213-4473-9f60-f4864082dcb1",
+            "title": "Ajax",
+            "summary": "Ajax의 역사와 개념에 대해 알아봅시다.",
+            "date_modified": "2022-08-10T00:00:00.000Z"
+        },
+        {
+            "url": "https://www.yeummy-blog.com/blog/ba94ae19-d2cf-4e25-bd9b-9e55a5a893dd",
+            "title": "react native Date:undefined 오류 해결",
+            "summary": "react native에서 Date:undefined 오류를 해결했던 경험에 대해 알아봅시다.",
+            "date_modified": "2022-06-29T00:00:00.000Z"
+        },
+        {
+            "url": "https://www.yeummy-blog.com/blog/fc62856a-cd61-499c-97c5-667944a8e572",
+            "title": "React Router v6",
+            "summary": "React Router v6 사용법을 알아봅니다.",
+            "date_modified": "2022-06-09T00:00:00.000Z"
+        },
+        {
+            "url": "https://www.yeummy-blog.com/blog/c747fb32-76ee-498b-9767-8881f500282d",
+            "title": "React vs React DOM",
+            "summary": "React와 React DOM은 무엇이며, 차이점은 무엇일까?",
+            "date_modified": "2022-06-01T00:00:00.000Z"
+        }
+    ]
+}

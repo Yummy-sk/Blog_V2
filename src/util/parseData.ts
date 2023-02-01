@@ -38,9 +38,9 @@ export const getCoverImg = (data: CoverImageResponse): string =>
 
 export const parseData = ({
   properties,
-}: Pick<PageObjectResponse, 'properties'>): BlogListTypes => {
+}: Pick<PageObjectResponse, 'properties'>): Omit<BlogListTypes, 'id'> => {
   return Object.entries(properties).reduce(
-    (acc: BlogListTypes, [, val]) => {
+    (acc: Omit<BlogListTypes, 'id'>, [, val]) => {
       // Note: info의 value 이름을 일반화 할 수 없기 때문에, rest로 처리
       const { id: _, type, ...info } = val;
 
