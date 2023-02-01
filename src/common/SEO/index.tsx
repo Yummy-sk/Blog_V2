@@ -26,6 +26,11 @@ export function SEO({ title, description, url, image }: Props) {
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:image' content={image} />
+
+      <meta
+        name='google-site-verification'
+        content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
+      />
     </Head>
   );
 }

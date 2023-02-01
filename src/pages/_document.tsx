@@ -44,10 +44,6 @@ class MyDocument extends Document {
         lang='ko'
         className='scroll-smooth'
         style={{ scrollBehavior: 'smooth' }}>
-        <meta
-          name='google-site-verification'
-          content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
-        />
         <Head />
         <body>
           <Main />
