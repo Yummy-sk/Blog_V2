@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.yeummy-blog.com
+
+# Sitemaps
+Sitemap: https://www.yeummy-blog.com/sitemap.xml
