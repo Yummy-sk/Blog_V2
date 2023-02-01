@@ -69,7 +69,7 @@ export function HomeProfile({ src }: Props) {
       />
       <S.Title>Sang Kwon Yeum</S.Title>
       <S.Paragraph>Graduate student at Jeju National University.</S.Paragraph>
-      <S.Paragraph>Currently working at Greenlabs.</S.Paragraph>
+      <S.Paragraph>Currently looking for any opportunity.</S.Paragraph>
       <ul>
         {logos.map(({ id, href, name, color }) => (
           <li key={id}>

@@ -6,15 +6,15 @@ function AboutMe() {
     <S.Wrapper>
       <S.Title>About me</S.Title>
       <S.Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quae
-        molestiae ipsum? Eius quae perferendis neque, consequatur placeat culpa
-        maxime rerum magni minima. Nisi sit omnis dolorem placeat possimus rem!
+        I’m a Front End Developer located in Korea. I&apos;m interested in UI
+        effects, animations and creating intuitive, dynamic user experiences.
       </S.Paragraph>
 
       <S.Paragraph>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum ullam
-        sapiente, iure eligendi fuga voluptate eum delectus earum alias. Dolorum
-        assumenda hic molestiae.
+        What excites me most about working in software development is being able
+        to design and create things that have purpose and solve real problems. I
+        want to solve the problems of the world in software and contribute to a
+        better world.
       </S.Paragraph>
     </S.Wrapper>
   );
