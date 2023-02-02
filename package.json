@@ -33,6 +33,7 @@
     "@types/react-dom": "18.0.10",
     "@types/react-lottie": "^1.2.6",
     "@types/react-syntax-highlighter": "^15.5.6",
+    "@vercel/analytics": "^0.1.8",
     "cloudinary-build-url": "^0.2.4",
     "esbuild": "^0.17.4",
     "eslint": "^8.2.0",
