@@ -1,45 +1,7 @@
-import { cloneElement } from 'react';
-import { useTheme } from 'styled-components';
-import { HiRss } from 'react-icons/hi';
-import { AiFillLinkedin, AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 import { nanoid } from 'nanoid';
+import { Logo } from '@/common/Logo/Logo';
+import { LogoItem } from '@/types/logo';
 import * as S from './style';
-
-type LogoItem = {
-  id: string;
-  href: string;
-  name: 'LinkedIn' | 'Github' | 'Twitter' | 'RSS';
-};
-type NameType = Pick<LogoItem, 'name'>;
-
-const getIcon = ({ name }: NameType) => {
-  switch (name) {
-    case 'LinkedIn':
-      return <AiFillLinkedin />;
-    case 'Github':
-      return <AiFillGithub />;
-    case 'Twitter':
-      return <AiOutlineTwitter />;
-    case 'RSS':
-      return <HiRss />;
-    default:
-      return <AiFillGithub />;
-  }
-};
-
-function Logo({ name }: NameType) {
-  const theme = useTheme();
-
-  return cloneElement(
-    getIcon({
-      name,
-    }),
-    {
-      size: 25,
-      color: theme.colors.gray,
-    },
-  );
-}
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -47,22 +9,26 @@ export function Footer() {
     {
       id: nanoid(),
       href: 'https://www.linkedin.com/in/sang-kwon-yeum/',
-      name: 'LinkedIn',
+      type: 'linkedin',
+      hover: '#0072B1',
     },
     {
       id: nanoid(),
       href: 'https://github.com/Yummy-sk',
-      name: 'Github',
+      type: 'github',
+      hover: '#000000',
     },
     {
       id: nanoid(),
       href: 'https://twitter.com/NateYeum',
-      name: 'Twitter',
+      type: 'twitter',
+      hover: '#1D9BF0',
     },
     {
       id: nanoid(),
       href: 'https://www.yeummy-blog.com/rss/feed.xml',
-      name: 'RSS',
+      type: 'rss',
+      hover: '#EE802F',
     },
   ];
 
@@ -70,10 +36,10 @@ export function Footer() {
     <S.Container>
       <S.Wrapper>
         <S.List>
-          {logos.map(({ id, href, name }) => (
+          {logos.map(({ id, href, type, hover }) => (
             <li key={id}>
               <a href={href}>
-                <Logo name={name} />
+                <Logo type={type} size={24} hover={hover} />
               </a>
             </li>
           ))}

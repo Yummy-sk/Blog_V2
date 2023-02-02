@@ -1,55 +1,32 @@
 import { nanoid } from 'nanoid';
-import { useColorMode } from '@chakra-ui/react';
-import { AiFillLinkedin, AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
+import { Logo } from '@/common/Logo/Logo';
 import { getCdnSrc } from '@/util';
+import { LogoItem } from '@/types/logo';
 import * as S from './HomeProfile.style';
 
 interface Props {
   src: string;
 }
 
-type LogoItem = {
-  id: string;
-  href: string;
-  name: 'LinkedIn' | 'Github' | 'Twitter';
-  color: string;
-};
-
-type NameType = Pick<LogoItem, 'name'>;
-
-const getIcon = ({ name }: NameType) => {
-  switch (name) {
-    case 'LinkedIn':
-      return <AiFillLinkedin size={30} />;
-    case 'Github':
-      return <AiFillGithub size={30} />;
-    case 'Twitter':
-      return <AiOutlineTwitter size={30} />;
-    default:
-      return <AiFillGithub size={30} />;
-  }
-};
-
 export function HomeProfile({ src }: Props) {
-  const { colorMode } = useColorMode();
   const logos: Array<LogoItem> = [
     {
       id: nanoid(),
       href: 'https://www.linkedin.com/in/sang-kwon-yeum/',
-      name: 'LinkedIn',
-      color: '#0072B1',
+      type: 'linkedin',
+      hover: '#0072B1',
     },
     {
       id: nanoid(),
       href: 'https://github.com/Yummy-sk',
-      name: 'Github',
-      color: '#000000',
+      type: 'github',
+      hover: '#000000',
     },
     {
       id: nanoid(),
       href: 'https://twitter.com/NateYeum',
-      name: 'Twitter',
-      color: '#1D9BF0',
+      type: 'twitter',
+      hover: '#1D9BF0',
     },
   ];
 
@@ -71,17 +48,11 @@ export function HomeProfile({ src }: Props) {
       <S.Paragraph>Graduate student at Jeju National University.</S.Paragraph>
       <S.Paragraph>Currently looking for any opportunity.</S.Paragraph>
       <ul>
-        {logos.map(({ id, href, name, color }) => (
+        {logos.map(({ id, href, type, hover }) => (
           <li key={id}>
-            <S.IconLink
-              href={href}
-              currentTheme={colorMode}
-              hoverColor={color}
-              target='_blank'>
-              {getIcon({
-                name,
-              })}
-            </S.IconLink>
+            <a target='_blank' href={href} rel='noreferrer'>
+              <Logo type={type} size={30} hover={hover} />
+            </a>
           </li>
         ))}
       </ul>

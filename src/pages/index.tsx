@@ -1,5 +1,13 @@
-import { Home } from '@/components';
-import { Transition, SEO } from '@/common';
+import dynamic from 'next/dynamic';
+import { generateRSS } from '@/util/generateRSS';
+
+const Home = dynamic(() => import('@/components/home').then(mod => mod.Home));
+
+const Transition = dynamic(() =>
+  import('@/common/Transition').then(mod => mod.Transition),
+);
+
+const SEO = dynamic(() => import('@/common/SEO').then(mod => mod.SEO));
 
 interface Props {
   src: string;
@@ -24,9 +32,12 @@ export default function Page({ src }: Props) {
 export function getStaticProps() {
   const src = process.env.NEXT_PUBLIC_PROFILE_URL;
 
+  generateRSS();
+
   return {
     props: {
       src,
     },
+    revalidate: 100000,
   };
 }

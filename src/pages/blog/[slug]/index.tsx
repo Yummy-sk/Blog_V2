@@ -1,8 +1,17 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Transition, SEO } from '@/common';
+import dynamic from 'next/dynamic';
 import { NotionService } from '@/service';
 import { BlogListProps, BlogState } from '@/types/data';
-import { BlogList } from '@/components';
+
+const BlogList = dynamic(() =>
+  import('@/components/blog').then(mod => mod.BlogList),
+);
+
+const Transition = dynamic(() =>
+  import('@/common/Transition').then(mod => mod.Transition),
+);
+
+const SEO = dynamic(() => import('@/common/SEO').then(mod => mod.SEO));
 
 interface Props {
   posts: Array<BlogListProps>;
@@ -112,7 +121,7 @@ export async function getStaticProps({
       tag: slug === 'all' ? '' : slug,
     },
     // NOTE: Incremental Static Regeneration
-    revalidate: 1000,
+    revalidate: 100000,
   };
 }
 
