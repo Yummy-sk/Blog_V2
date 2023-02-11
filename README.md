@@ -3,13 +3,16 @@
 Notion API를 사용하여 파일을 업로드 하는 방식이 아닌 Notion으로 간편하게 글을 작성할 수 있는 블로그입니다.
 
 ## 사용한 기술
-+ TypeScript
-+ React.js
-+ Next.js
-+ Styled Components
-+ Notion API
+
+- TypeScript
+- React.js
+- Next.js
+- Styled Components
+- Notion API
 
 ## 글 목록
+
+- [트랜스포트 계층](https://www.yeummy-blog.com/post/b81473b5-43fc-4f13-b428-583fe51dab5a)
 - [Mutations & Updates - 번역](https://www.yeummy-blog.com/post/df29c9f8-7006-470d-bd1d-1344214e7480)
 - [Webpack](https://www.yeummy-blog.com/post/d624ea50-6947-4f8d-9f0f-97f5989b9849)
 - [Scope & Closure](https://www.yeummy-blog.com/post/09856ec5-14ed-47c7-a108-24770625affb)
