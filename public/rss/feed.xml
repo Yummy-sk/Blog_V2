@@ -4,7 +4,7 @@
         <title>Yeummy-sk Blog</title>
         <link>https://www.yeummy-blog.com/</link>
         <description>성장을 위해 노력하는 개발자 염상권의 블로그입니다.</description>
-        <lastBuildDate>Sat, 11 Feb 2023 20:57:58 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 12 Feb 2023 09:59:12 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -14,11 +14,11 @@
         </image>
         <copyright>All rights reserved 2023, Jatin Sharma</copyright>
         <item>
-            <title><![CDATA[트랜스포트 계층]]></title>
-            <link>https://www.yeummy-blog.com/blog/b81473b5-43fc-4f13-b428-583fe51dab5a</link>
-            <guid>https://www.yeummy-blog.com/blog/b81473b5-43fc-4f13-b428-583fe51dab5a</guid>
+            <title><![CDATA[글또를 시작하며..]]></title>
+            <link>https://www.yeummy-blog.com/blog/15b4562d-d30f-4cdd-aac5-6bc54b5d9dbf</link>
+            <guid>https://www.yeummy-blog.com/blog/15b4562d-d30f-4cdd-aac5-6bc54b5d9dbf</guid>
             <pubDate>Sun, 12 Feb 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[네트워크 트랜스포트 계층에 대해 알아봅시다.]]></description>
+            <description><![CDATA[글또를 시작하기 전 다짐]]></description>
         </item>
         <item>
             <title><![CDATA[Mutations & Updates - 번역]]></title>
